@@ -4,6 +4,7 @@ import { useTheme } from "@/components/theme-provider";
 import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
+import { setPendingHash, scrollToElement } from "@/lib/navigation";
 
 const navLinks = [
   { href: "/services", label: "Services", isPage: true },
@@ -27,30 +28,26 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navigateToPage = (href: string) => {
+  const handleNavigation = (href: string) => {
     setIsMobileMenuOpen(false);
-    setLocation(href);
-  };
 
-  const scrollToSection = (href: string) => {
-    setIsMobileMenuOpen(false);
-    
-    // If it's an anchor link and we're already on the home page
-    if (href.startsWith("#") && location === "/") {
-      const id = href.slice(1);
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-    }
-
-    // Otherwise use location for cross-page/initial-page navigation
-    if (href.startsWith("#")) {
-      setLocation(`/${href}`);
-    } else {
+    // For page links, navigate directly
+    if (!href.startsWith("#")) {
       setLocation(href);
+      return;
     }
+
+    const id = href.slice(1);
+
+    // If we're on home page, scroll directly
+    if (location === "/") {
+      scrollToElement(id);
+      return;
+    }
+
+    // Otherwise, store pending hash and navigate to home
+    setPendingHash(id);
+    setLocation("/");
   };
 
   return (
@@ -94,7 +91,7 @@ export function Header() {
               ) : (
                 <button
                   key={link.href}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => handleNavigation(link.href)}
                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
                   data-testid={`link-nav-${link.label.toLowerCase()}`}
                 >
@@ -120,7 +117,7 @@ export function Header() {
             </Button>
 
             <Button
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => handleNavigation("#contact")}
               className="hidden sm:flex bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
               data-testid="button-get-started"
             >
@@ -152,7 +149,7 @@ export function Header() {
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => handleNavigation(link.href)}
                   className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
                   data-testid={`link-mobile-${link.label.toLowerCase()}`}
                 >
@@ -160,7 +157,7 @@ export function Header() {
                 </button>
               ))}
               <Button
-                onClick={() => scrollToSection("#contact")}
+                onClick={() => handleNavigation("#contact")}
                 className="mt-4 bg-gradient-to-r from-primary to-accent w-full"
                 data-testid="button-mobile-get-started"
               >
