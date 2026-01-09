@@ -35,6 +35,8 @@ import {
   ArrowRight
 } from "lucide-react";
 import { Link } from "wouter";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const CONSULTATION_URL = "/book";
 
@@ -216,28 +218,9 @@ function ServiceSection({
 export default function Services() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2" data-testid="link-services-logo">
-            <div className="w-8 h-8 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Code className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-bold text-lg">Build Right Web</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/" data-testid="link-services-home">
-              <Button variant="ghost" size="sm">Home</Button>
-            </Link>
-            <Button size="sm" asChild data-testid="button-header-cta">
-              <Link href={CONSULTATION_URL}>
-                Book a Call
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
-      <main className="max-w-5xl mx-auto px-6 lg:px-8">
+      <main className="max-w-5xl mx-auto px-6 lg:px-8 pt-20">
         <section className="py-16 lg:py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -315,11 +298,7 @@ export default function Services() {
         </section>
       </main>
 
-      <footer className="border-t border-border/50 py-8">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center text-muted-foreground text-sm">
-          © {new Date().getFullYear()} Build Right Web. All rights reserved.
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

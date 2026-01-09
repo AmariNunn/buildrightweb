@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Code, Calendar, ArrowLeft } from "lucide-react";
-import { Link } from "wouter";
+import { Calendar } from "lucide-react";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const CAL_EMBED_URL = "https://cal.com/skyiq/website-development";
 
@@ -12,24 +12,9 @@ export default function Book() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="border-b border-border/50 bg-background/80 backdrop-blur-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Code className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-bold text-lg">Build Right Web</span>
-          </Link>
-          <Link href="/services">
-            <Button variant="ghost" size="sm">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Services
-            </Button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="flex-1 flex flex-col py-12 px-6 lg:px-8">
+      <main className="flex-1 flex flex-col pt-24 pb-12 px-6 lg:px-8">
         <div className="max-w-5xl mx-auto w-full mb-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -73,11 +58,7 @@ export default function Book() {
         </div>
       </main>
 
-      <footer className="border-t border-border/50 py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center text-muted-foreground text-sm">
-          © {new Date().getFullYear()} Build Right Web. Accelerating Digital Evolution.
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
