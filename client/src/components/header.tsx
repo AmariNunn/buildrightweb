@@ -7,11 +7,15 @@ import { Link } from "wouter";
 
 const navLinks = [
   { href: "/services", label: "Services", isPage: true },
-  { href: "/#portfolio", label: "Portfolio", isPage: false },
-  { href: "/#process", label: "Process", isPage: false },
-  { href: "/#testimonials", label: "Testimonials", isPage: false },
+  { href: "portfolio", label: "Portfolio", isPage: false },
+  { href: "process", label: "Process", isPage: false },
+  { href: "testimonials", label: "Testimonials", isPage: false },
   { href: "/book", label: "Consultation", isPage: true },
 ];
+
+function goToSection(id: string) {
+  window.location.href = "/#" + id;
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,14 +69,14 @@ export function Header() {
                   {link.label}
                 </Link>
               ) : (
-                <a
+                <button
                   key={link.href}
-                  href={link.href}
+                  onClick={() => goToSection(link.href)}
                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
                   data-testid={`link-nav-${link.label.toLowerCase()}`}
                 >
                   {link.label}
-                </a>
+                </button>
               )
             ))}
           </nav>
@@ -92,14 +96,13 @@ export function Header() {
               )}
             </Button>
 
-            <a href="/#contact" className="hidden sm:block">
-              <Button
-                className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-                data-testid="button-get-started"
-              >
-                Get Started
-              </Button>
-            </a>
+            <Button
+              onClick={() => goToSection("contact")}
+              className="hidden sm:flex bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+              data-testid="button-get-started"
+            >
+              Get Started
+            </Button>
 
             <Button
               variant="ghost"
@@ -135,25 +138,23 @@ export function Header() {
                     {link.label}
                   </Link>
                 ) : (
-                  <a
+                  <button
                     key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => { setIsMobileMenuOpen(false); goToSection(link.href); }}
                     className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
                     data-testid={`link-mobile-${link.label.toLowerCase()}`}
                   >
                     {link.label}
-                  </a>
+                  </button>
                 )
               ))}
-              <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4">
-                <Button
-                  className="bg-gradient-to-r from-primary to-accent w-full"
-                  data-testid="button-mobile-get-started"
-                >
-                  Get Started
-                </Button>
-              </a>
+              <Button
+                onClick={() => { setIsMobileMenuOpen(false); goToSection("contact"); }}
+                className="mt-4 bg-gradient-to-r from-primary to-accent w-full"
+                data-testid="button-mobile-get-started"
+              >
+                Get Started
+              </Button>
             </nav>
           </motion.div>
         )}
