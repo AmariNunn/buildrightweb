@@ -34,22 +34,22 @@ export function Header() {
 
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
-    if (location !== "/") {
-      setLocation("/");
-      // Using a longer timeout to ensure page navigation completes before scrolling
-      setTimeout(() => {
-        const id = href.startsWith("#") ? href.slice(1) : href;
-        const element = document.getElementById(id) || document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 300);
-    } else {
-      const id = href.startsWith("#") ? href.slice(1) : href;
-      const element = document.getElementById(id) || document.querySelector(href);
+    
+    // If it's an anchor link and we're already on the home page
+    if (href.startsWith("#") && location === "/") {
+      const id = href.slice(1);
+      const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+        return;
       }
+    }
+
+    // Otherwise use location for cross-page/initial-page navigation
+    if (href.startsWith("#")) {
+      setLocation(`/${href}`);
+    } else {
+      setLocation(href);
     }
   };
 
@@ -150,40 +150,22 @@ export function Header() {
           >
             <nav className="flex flex-col p-6 gap-2">
               {navLinks.map((link) => (
-                link.isPage ? (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
-                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <a
-                    key={link.href}
-                    href={`/${link.href}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
-                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
-                  >
-                    {link.label}
-                  </a>
-                )
-              ))}
-              <a
-                href="/#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-4"
-              >
-                <Button
-                  className="w-full bg-gradient-to-r from-primary to-accent"
-                  data-testid="button-mobile-get-started"
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
                 >
-                  Get Started
-                </Button>
-              </a>
+                  {link.label}
+                </button>
+              ))}
+              <Button
+                onClick={() => scrollToSection("#contact")}
+                className="mt-4 bg-gradient-to-r from-primary to-accent w-full"
+                data-testid="button-mobile-get-started"
+              >
+                Get Started
+              </Button>
             </nav>
           </motion.div>
         )}
