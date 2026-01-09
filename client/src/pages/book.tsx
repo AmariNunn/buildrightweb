@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Code, Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 
-const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
+const CAL_EMBED_URL = "https://cal.com/skyiq/website-development";
 
 export default function Book() {
   const [isLoading, setIsLoading] = useState(true);
@@ -64,7 +64,7 @@ export default function Book() {
           )}
           <div className="w-full h-full flex items-start justify-center overflow-hidden">
             <iframe
-              src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
+              src={`${CAL_EMBED_URL}?embed=true&layout=month_view&hideBranding=true`}
               className="w-[180%] h-[180%] origin-top border-none"
               style={{ 
                 transform: "scale(0.55)",
