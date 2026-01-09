@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { 
-  Check, 
   TrendingUp, 
   Users, 
   MessageCircle,
@@ -13,6 +12,8 @@ import {
   ArrowRight
 } from "lucide-react";
 import { SiInstagram, SiLinkedin, SiX, SiFacebook, SiTiktok, SiYoutube } from "react-icons/si";
+
+const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
 
 const features = [
   { icon: Calendar, text: "Content Strategy & Planning" },
@@ -39,13 +40,6 @@ const stats = [
 ];
 
 export function SocialMedia() {
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative py-20 lg:py-32 bg-muted/30" data-testid="section-social-media">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -90,12 +84,15 @@ export function SocialMedia() {
 
             <Button
               size="lg"
-              onClick={scrollToContact}
+              asChild
               className="bg-gradient-to-r from-accent to-primary hover:opacity-90 transition-opacity group"
               data-testid="button-social-cta"
             >
-              Grow Your Social Presence
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                <Calendar className="w-4 h-4 mr-2" />
+                Grow Your Social Presence
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </motion.div>
 

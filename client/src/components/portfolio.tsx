@@ -2,7 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight, Sparkles } from "lucide-react";
+import { ExternalLink, ArrowRight, Sparkles, Calendar } from "lucide-react";
+
+const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
 
 const projects = [
   {
@@ -177,15 +179,30 @@ export function Portfolio() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <Button
-            variant="outline"
-            size="lg"
-            className="group"
-            data-testid="button-view-all-work"
-          >
-            View All Work
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <p className="text-muted-foreground mb-4">Want something like this for your business?</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button
+              size="lg"
+              asChild
+              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
+              data-testid="button-portfolio-cta"
+            >
+              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                <Calendar className="w-4 h-4 mr-2" />
+                Start Your Project
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="group"
+              data-testid="button-view-all-work"
+            >
+              View All Work
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

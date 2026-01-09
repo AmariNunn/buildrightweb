@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Play, Zap, Globe, TrendingUp } from "lucide-react";
+import { ArrowRight, Play, Zap, Globe, TrendingUp, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+
+const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
 
 function AnimatedGrid() {
   return (
@@ -93,12 +95,15 @@ export function Hero() {
           >
             <Button
               size="lg"
-              onClick={() => scrollToSection("#contact")}
+              asChild
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
               data-testid="button-hero-cta"
             >
-              Start Your Project
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                <Calendar className="w-4 h-4 mr-2" />
+                Book Free Consultation
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
             <Button
               size="lg"

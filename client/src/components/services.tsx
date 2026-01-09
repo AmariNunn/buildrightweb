@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { 
   ShoppingCart, 
@@ -8,8 +9,11 @@ import {
   Palette, 
   Rocket, 
   Code,
-  ArrowRight
+  ArrowRight,
+  Calendar
 } from "lucide-react";
+
+const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
 
 const services = [
   {
@@ -152,6 +156,28 @@ export function Services() {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <p className="text-muted-foreground mb-4">Not sure which service is right for you?</p>
+          <Button
+            size="lg"
+            asChild
+            className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
+            data-testid="button-services-cta"
+          >
+            <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <Calendar className="w-4 h-4 mr-2" />
+              Get Expert Advice
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
         </motion.div>
       </div>
     </section>

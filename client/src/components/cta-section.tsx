@@ -21,8 +21,12 @@ import {
   Loader2,
   Shield,
   Clock,
-  Headphones
+  Headphones,
+  Calendar,
+  ExternalLink
 } from "lucide-react";
+
+const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
 import {
   Form,
   FormControl,
@@ -108,7 +112,7 @@ export function CTASection() {
               Whether it's a website, social media strategy, or both—we're here to help.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.text}
@@ -125,6 +129,28 @@ export function CTASection() {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.6 }}
+              className="p-6 rounded-md bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20"
+            >
+              <p className="text-sm text-muted-foreground mb-3">Prefer to talk live?</p>
+              <Button
+                size="lg"
+                asChild
+                className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
+                data-testid="button-cta-book"
+              >
+                <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Book a Free Consultation
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+            </motion.div>
           </motion.div>
 
           <motion.div

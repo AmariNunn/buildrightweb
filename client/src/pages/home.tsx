@@ -5,6 +5,7 @@ import { SocialMedia } from "@/components/social-media";
 import { Portfolio } from "@/components/portfolio";
 import { Process } from "@/components/process";
 import { Testimonials } from "@/components/testimonials";
+import { BookingSection } from "@/components/booking-section";
 import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <Portfolio />
         <Process />
         <Testimonials />
+        <BookingSection />
         <CTASection />
       </main>
       <Footer />
