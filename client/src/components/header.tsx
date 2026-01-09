@@ -39,15 +39,17 @@ export function Header() {
 
     const id = href.slice(1);
 
-    // If we're on home page, scroll directly
-    if (location === "/") {
-      scrollToElement(id);
-      return;
-    }
+    // Check if we're on home page using window.location for reliability
+    const isOnHome = window.location.pathname === "/" || window.location.pathname === "";
 
-    // Otherwise, store pending hash and navigate to home
-    setPendingHash(id);
-    setLocation("/");
+    if (isOnHome) {
+      // Already on home, scroll directly
+      scrollToElement(id);
+    } else {
+      // On another page, store pending hash and navigate to home
+      setPendingHash(id);
+      setLocation("/");
+    }
   };
 
   return (
