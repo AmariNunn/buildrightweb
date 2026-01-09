@@ -14,7 +14,8 @@ const navLinks = [
 ];
 
 function goToSection(id: string) {
-  window.location.assign("/#" + id);
+  window.location.replace("/#" + id);
+  location.reload();
 }
 
 export function Header() {
