@@ -58,7 +58,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium border border-primary/30 bg-primary/10">
+            <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium border border-primary/30 bg-primary/10 -ml-[10px]">
               <Zap className="w-4 h-4 mr-2 text-primary" />
               Premium Web Solutions & Social Media Marketing
             </Badge>
