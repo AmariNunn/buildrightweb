@@ -36,14 +36,17 @@ export function Header() {
     setIsMobileMenuOpen(false);
     if (location !== "/") {
       setLocation("/");
+      // Using a longer timeout to ensure page navigation completes before scrolling
       setTimeout(() => {
-        const element = document.querySelector(href);
+        const id = href.startsWith("#") ? href.slice(1) : href;
+        const element = document.getElementById(id) || document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100);
+      }, 300);
     } else {
-      const element = document.querySelector(href);
+      const id = href.startsWith("#") ? href.slice(1) : href;
+      const element = document.getElementById(id) || document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
