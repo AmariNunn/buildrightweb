@@ -3,12 +3,13 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "wouter";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#process", label: "Process" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "/services", label: "Services", isPage: true },
+  { href: "#portfolio", label: "Portfolio", isPage: false },
+  { href: "#process", label: "Process", isPage: false },
+  { href: "#testimonials", label: "Testimonials", isPage: false },
 ];
 
 export function Header() {
@@ -61,14 +62,25 @@ export function Header() {
 
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
-                data-testid={`link-nav-${link.label.toLowerCase()}`}
-              >
-                {link.label}
-              </button>
+              link.isPage ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
+                  data-testid={`link-nav-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
+                  data-testid={`link-nav-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </button>
+              )
             ))}
           </nav>
 
@@ -118,14 +130,26 @@ export function Header() {
           >
             <nav className="flex flex-col p-6 gap-2">
               {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
-                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </button>
+                link.isPage ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </button>
+                )
               ))}
               <Button
                 onClick={() => scrollToSection("#contact")}
