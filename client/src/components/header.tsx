@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 
 const navLinks = [
-  { href: "/services", label: "Services", isPage: true },
+  { href: "services", label: "Services", isPage: false },
   { href: "portfolio", label: "Portfolio", isPage: false },
   { href: "process", label: "Process", isPage: false },
   { href: "testimonials", label: "Testimonials", isPage: false },
@@ -14,12 +14,20 @@ const navLinks = [
 ];
 
 function goToSection(id: string) {
+  if (id === "services") {
+    window.location.href = "/services";
+    return;
+  }
   window.location.href = "/#" + id;
   const el = document.getElementById(id);
   if (el) el.scrollIntoView();
 }
 
 function goToSectionMobile(id: string) {
+  if (id === "services") {
+    window.location.href = "/services";
+    return;
+  }
   window.location.replace("/#" + id);
   location.reload();
 }
@@ -148,7 +156,7 @@ export function Header() {
                   <button
                     key={link.href}
                     onClick={() => { setIsMobileMenuOpen(false); goToSectionMobile(link.href); }}
-                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md w-full"
                     data-testid={`link-mobile-${link.label.toLowerCase()}`}
                   >
                     {link.label}
