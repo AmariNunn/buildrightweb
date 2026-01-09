@@ -113,24 +113,29 @@ export function BookingSection() {
                 </Button>
               </div>
               
-              <div className="relative" style={{ height: "700px" }}>
+              <div className="relative overflow-hidden rounded-md" style={{ height: "800px" }}>
                 {isLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-background">
+                  <div className="absolute inset-0 flex items-center justify-center bg-background z-10">
                     <div className="text-center">
                       <div className="w-12 h-12 rounded-full border-4 border-primary/30 border-t-primary animate-spin mx-auto mb-4" />
                       <p className="text-muted-foreground">Loading booking calendar...</p>
                     </div>
                   </div>
                 )}
-                <iframe
-                  src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
-                  className="w-full"
-                  style={{ border: "none", height: "700px", overflow: "hidden" }}
-                  onLoad={() => setIsLoading(false)}
-                  title="Book a consultation"
-                  scrolling="no"
-                  data-testid="iframe-calcom"
-                />
+                <div className="w-full h-full flex items-start justify-center overflow-hidden">
+                  <iframe
+                    src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
+                    className="w-[180%] h-[180%] origin-top border-none"
+                    style={{ 
+                      transform: "scale(0.55)",
+                      marginTop: "-250px"
+                    }}
+                    onLoad={() => setIsLoading(false)}
+                    title="Book a consultation"
+                    scrolling="no"
+                    data-testid="iframe-calcom"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
