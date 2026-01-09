@@ -113,7 +113,7 @@ export function BookingSection() {
                 </Button>
               </div>
               
-              <div className="relative" style={{ minHeight: "600px" }}>
+              <div className="relative" style={{ height: "700px" }}>
                 {isLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-background">
                     <div className="text-center">
@@ -123,11 +123,12 @@ export function BookingSection() {
                   </div>
                 )}
                 <iframe
-                  src={CONSULTATION_URL}
-                  className="w-full h-full min-h-[600px]"
-                  style={{ border: "none" }}
+                  src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
+                  className="w-full"
+                  style={{ border: "none", height: "700px", overflow: "hidden" }}
                   onLoad={() => setIsLoading(false)}
                   title="Book a consultation"
+                  scrolling="no"
                   data-testid="iframe-calcom"
                 />
               </div>
