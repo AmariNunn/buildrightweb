@@ -53,7 +53,7 @@ export default function Book() {
           </motion.div>
         </div>
 
-        <div className="flex-1 max-w-6xl mx-auto w-full bg-background rounded-xl border border-border/50 overflow-hidden shadow-2xl relative" style={{ minHeight: "800px" }}>
+        <div className="flex-1 max-w-6xl mx-auto w-full bg-background rounded-xl border border-border/50 overflow-hidden shadow-2xl relative" style={{ minHeight: "700px" }}>
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-background z-10">
               <div className="text-center">
@@ -62,19 +62,14 @@ export default function Book() {
               </div>
             </div>
           )}
-          <div className="w-full h-full flex items-start justify-center overflow-hidden">
-            <iframe
-              src={`${CAL_EMBED_URL}?embed=true&layout=month_view&hideBranding=true`}
-              className="w-[180%] h-[180%] origin-top border-none"
-              style={{ 
-                transform: "scale(0.55)",
-                marginTop: "-250px"
-              }}
-              onLoad={() => setIsLoading(false)}
-              title="Book a consultation"
-              scrolling="no"
-            />
-          </div>
+          <iframe
+            src="https://cal.com/skyiq/website-development"
+            className="w-full h-full border-none"
+            style={{ minHeight: "700px" }}
+            onLoad={() => setIsLoading(false)}
+            title="Book a consultation"
+            allow="payment"
+          />
         </div>
       </main>
 
