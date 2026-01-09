@@ -132,9 +132,9 @@ function ServiceCard({ service, index }: { service: ServiceItem; index: number }
               <span className="font-medium truncate">{service.name}</span>
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">
-              <Badge variant="secondary" className="font-mono text-sm whitespace-nowrap">
-                {service.price}
-              </Badge>
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <TrendingUp className="w-4 h-4" />
+              </div>
               <ChevronDown 
                 className={`w-5 h-5 text-muted-foreground transition-transform ${isOpen ? 'rotate-180' : ''}`} 
               />
