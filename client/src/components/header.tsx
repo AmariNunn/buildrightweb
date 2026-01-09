@@ -14,6 +14,12 @@ const navLinks = [
 ];
 
 function goToSection(id: string) {
+  window.location.href = "/#" + id;
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView();
+}
+
+function goToSectionMobile(id: string) {
   window.location.replace("/#" + id);
   location.reload();
 }
@@ -141,7 +147,7 @@ export function Header() {
                 ) : (
                   <button
                     key={link.href}
-                    onClick={() => { setIsMobileMenuOpen(false); goToSection(link.href); }}
+                    onClick={() => { setIsMobileMenuOpen(false); goToSectionMobile(link.href); }}
                     className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
                     data-testid={`link-mobile-${link.label.toLowerCase()}`}
                   >
@@ -150,7 +156,7 @@ export function Header() {
                 )
               ))}
               <Button
-                onClick={() => { setIsMobileMenuOpen(false); goToSection("contact"); }}
+                onClick={() => { setIsMobileMenuOpen(false); goToSectionMobile("contact"); }}
                 className="mt-4 bg-gradient-to-r from-primary to-accent w-full"
                 data-testid="button-mobile-get-started"
               >
