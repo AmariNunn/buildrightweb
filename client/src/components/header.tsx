@@ -10,6 +10,7 @@ const navLinks = [
   { href: "#portfolio", label: "Portfolio", isPage: false },
   { href: "#process", label: "Process", isPage: false },
   { href: "#testimonials", label: "Testimonials", isPage: false },
+  { href: "/book", label: "Consultation", isPage: true },
 ];
 
 export function Header() {
