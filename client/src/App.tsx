@@ -14,7 +14,17 @@ function ScrollToTop() {
   const [location] = useLocation();
   
   useEffect(() => {
-    if (!window.location.hash) {
+    // Don't scroll to top if there's a hash - let the browser handle it
+    const hash = window.location.hash;
+    if (hash) {
+      // Scroll to the element after a brief delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [location]);
