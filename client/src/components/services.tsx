@@ -115,6 +115,7 @@ export function Services() {
         >
           {services.map((service, index) => (
             <motion.div key={service.title} variants={itemVariants}>
+              <Link href={CONSULTATION_URL}>
               <Card 
                 className="group h-full hover-elevate transition-all duration-300 border-border/50 hover:border-primary/30 cursor-pointer"
                 data-testid={`card-service-${service.title.toLowerCase().replace(/\s/g, '-')}`}
@@ -156,6 +157,7 @@ export function Services() {
                   </div>
                 </CardContent>
               </Card>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
