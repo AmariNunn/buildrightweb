@@ -14,7 +14,12 @@ const navLinks = [
 ];
 
 function goToSection(id: string) {
-  window.location.href = "/#" + id;
+  if (window.location.pathname === "/") {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.location.href = "/#" + id;
+  }
 }
 
 export function Header() {
