@@ -76,7 +76,7 @@ const socialServices: ServiceItem[] = [
   { name: "Posts Per Month", price: "$500/month", description: "We make 12 to 16 posts each month. More content, more eyes on you!", icon: Calendar },
   { name: "Stay Visible", price: "$175/month", description: "Keep your profile easy to find and fresh for people to see.", icon: TrendingUp },
   { name: "Built for Leaders", price: "$600/month", description: "Content that fits bosses or top people in business. Look like the expert you are.", icon: Users },
-  { name: "LinkedIn-Only Content", price: "$400/month", description: "Posts and stuff made just for LinkedIn. Perfect for business networking.", icon: Share2 },
+  { name: "Per Platform Content", price: "$400/month", description: "Bespoke content creation tailored specifically for each social platform's unique algorithm and audience behavior to maximize organic reach and engagement.", icon: Share2 },
   { name: "Thought Leadership", price: "$500/month", description: "Share smart ideas and tips to show you're an expert in your field.", icon: GraduationCap },
   { name: "Articles", price: "$150/each", description: "Longer reads with facts and stories. Great for deep dives on topics.", icon: FileText },
   { name: "Multiple Platforms", price: "$600/month", description: "Handle posts on 3 social sites at once. Reach more people!", icon: Share2 },
