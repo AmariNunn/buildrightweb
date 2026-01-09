@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
@@ -9,6 +9,10 @@ const CAL_EMBED_URL = "https://cal.com/skyiq/website-development";
 
 export default function Book() {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

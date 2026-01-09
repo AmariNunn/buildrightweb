@@ -16,14 +16,16 @@ const projects = [
     description: "Modern project management platform with real-time collaboration features.",
     gradient: "from-blue-600 via-cyan-500 to-teal-400",
     size: "large",
+    url: "https://www.lyrarobotics.io/",
   },
   {
     id: 2,
-    title: "Luxe Boutique",
-    category: "E-Commerce",
-    description: "High-end fashion store with seamless shopping experience.",
-    gradient: "from-purple-600 via-pink-500 to-rose-400",
+    title: "Artisan Studio",
+    category: "Portfolio",
+    description: "Creative portfolio showcasing artistic works and exhibitions.",
+    gradient: "from-orange-600 via-amber-500 to-yellow-400",
     size: "small",
+    url: "https://ondafloent.money",
   },
   {
     id: 3,
@@ -32,30 +34,16 @@ const projects = [
     description: "Secure banking dashboard with advanced analytics.",
     gradient: "from-emerald-600 via-green-500 to-lime-400",
     size: "small",
+    url: "https://www.skyiq.cloud",
   },
   {
     id: 4,
-    title: "Artisan Studio",
-    category: "Portfolio",
-    description: "Creative portfolio showcasing artistic works and exhibitions.",
-    gradient: "from-orange-600 via-amber-500 to-yellow-400",
-    size: "medium",
-  },
-  {
-    id: 5,
-    title: "HealthHub",
-    category: "Healthcare",
-    description: "Patient portal with appointment booking and telehealth features.",
-    gradient: "from-indigo-600 via-violet-500 to-purple-400",
-    size: "medium",
-  },
-  {
-    id: 6,
     title: "EduLearn Platform",
     category: "Education",
     description: "Online learning platform with interactive courses and progress tracking.",
     gradient: "from-rose-600 via-red-500 to-orange-400",
-    size: "large",
+    size: "medium",
+    url: "https://excellenceinmotion.org/",
   },
 ];
 
@@ -96,6 +84,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       variants={itemVariants}
       className={`group ${getGridClass()}`}
     >
+      <a href={project.url} target="_blank" rel="noopener noreferrer">
       <Card 
         className="h-full overflow-hidden border-border/50 hover:border-primary/30 transition-all duration-300 cursor-pointer"
         data-testid={`card-portfolio-${project.id}`}
@@ -134,6 +123,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           </div>
         </CardContent>
       </Card>
+      </a>
     </motion.div>
   );
 }
