@@ -7,6 +7,7 @@ import { Calendar, ExternalLink, CheckCircle, Clock, Video, ArrowRight } from "l
 import { Link } from "wouter";
 
 const CONSULTATION_URL = "/book";
+const CAL_EMBED_URL = "https://cal.com/skyiq/website-development";
 
 const benefits = [
   { icon: Clock, text: "30-minute strategy session" },
@@ -77,12 +78,12 @@ export function BookingSection() {
             <Button
               size="lg"
               asChild
-              className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group lg:hidden"
-              data-testid="button-booking-mobile-cta"
+              className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
+              data-testid="button-booking-cta"
             >
               <Link href={CONSULTATION_URL}>
                 <Calendar className="w-4 h-4 mr-2" />
-                Book on Cal.com
+                Book Your Consultation
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
@@ -93,10 +94,10 @@ export function BookingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="lg:col-span-2 relative"
+            className="lg:col-span-2 relative hidden lg:block"
           >
             <div className="bg-background rounded-md border border-border/50 overflow-hidden shadow-lg">
-              <div className="bg-muted/50 px-4 py-3 border-b border-border/50 flex items-center justify-between">
+              <div className="bg-muted/50 px-4 py-3 border-b border-border/50 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-primary" />
                   <span className="font-medium text-sm">Schedule a Consultation</span>
@@ -115,7 +116,7 @@ export function BookingSection() {
                 </Button>
               </div>
               
-              <div className="relative overflow-hidden rounded-md" style={{ height: "800px" }}>
+              <div className="relative overflow-hidden rounded-md min-h-[50vh] lg:min-h-[60vh] xl:min-h-[70vh]">
                 {isLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-background z-10">
                     <div className="text-center">
@@ -124,20 +125,13 @@ export function BookingSection() {
                     </div>
                   </div>
                 )}
-                <div className="w-full h-full flex items-start justify-center overflow-hidden">
-                  <iframe
-                    src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
-                    className="w-[180%] h-[180%] origin-top border-none"
-                    style={{ 
-                      transform: "scale(0.55)",
-                      marginTop: "-250px"
-                    }}
-                    onLoad={() => setIsLoading(false)}
-                    title="Book a consultation"
-                    scrolling="no"
-                    data-testid="iframe-calcom"
-                  />
-                </div>
+                <iframe
+                  src={CAL_EMBED_URL}
+                  className="w-full h-full border-none absolute inset-0"
+                  onLoad={() => setIsLoading(false)}
+                  title="Book a consultation"
+                  data-testid="iframe-calcom"
+                />
               </div>
             </div>
           </motion.div>
