@@ -9,17 +9,14 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Services from "@/pages/services";
 import Book from "@/pages/book";
-import { hasPendingHash } from "@/lib/navigation";
 
 function ScrollToTop() {
   const [location] = useLocation();
   
   useEffect(() => {
-    // Skip scroll-to-top when there's a pending hash (anchor navigation in progress)
-    if (hasPendingHash() || window.location.hash) {
-      return;
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
-    window.scrollTo({ top: 0, behavior: "instant" });
   }, [location]);
   
   return null;

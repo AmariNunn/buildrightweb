@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "wouter";
-import { setPendingHash, scrollToElement } from "@/lib/navigation";
+import { Link } from "wouter";
 
 const navLinks = [
   { href: "/services", label: "Services", isPage: true },
-  { href: "#portfolio", label: "Portfolio", isPage: false },
-  { href: "#process", label: "Process", isPage: false },
-  { href: "#testimonials", label: "Testimonials", isPage: false },
+  { href: "/#portfolio", label: "Portfolio", isPage: false },
+  { href: "/#process", label: "Process", isPage: false },
+  { href: "/#testimonials", label: "Testimonials", isPage: false },
   { href: "/book", label: "Consultation", isPage: true },
 ];
 
@@ -18,7 +17,6 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,30 +25,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleNavigation = (href: string) => {
-    setIsMobileMenuOpen(false);
-
-    // For page links, navigate directly
-    if (!href.startsWith("#")) {
-      setLocation(href);
-      return;
-    }
-
-    const id = href.slice(1);
-
-    // Check if we're on home page using window.location for reliability
-    const isOnHome = window.location.pathname === "/" || window.location.pathname === "";
-
-    if (isOnHome) {
-      // Already on home, scroll directly
-      scrollToElement(id);
-    } else {
-      // On another page, store pending hash and navigate to home
-      setPendingHash(id);
-      setLocation("/");
-    }
-  };
 
   return (
     <header
@@ -64,7 +38,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-2 group"
             data-testid="link-logo"
           >
@@ -91,14 +65,14 @@ export function Header() {
                   {link.label}
                 </Link>
               ) : (
-                <button
+                <a
                   key={link.href}
-                  onClick={() => handleNavigation(link.href)}
+                  href={link.href}
                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover-elevate"
                   data-testid={`link-nav-${link.label.toLowerCase()}`}
                 >
                   {link.label}
-                </button>
+                </a>
               )
             ))}
           </nav>
@@ -118,13 +92,14 @@ export function Header() {
               )}
             </Button>
 
-            <Button
-              onClick={() => handleNavigation("#contact")}
-              className="hidden sm:flex bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-              data-testid="button-get-started"
-            >
-              Get Started
-            </Button>
+            <a href="/#contact" className="hidden sm:block">
+              <Button
+                className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+                data-testid="button-get-started"
+              >
+                Get Started
+              </Button>
+            </a>
 
             <Button
               variant="ghost"
@@ -149,22 +124,36 @@ export function Header() {
           >
             <nav className="flex flex-col p-6 gap-2">
               {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavigation(link.href)}
-                  className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
-                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </button>
+                link.isPage ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
-              <Button
-                onClick={() => handleNavigation("#contact")}
-                className="mt-4 bg-gradient-to-r from-primary to-accent w-full"
-                data-testid="button-mobile-get-started"
-              >
-                Get Started
-              </Button>
+              <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4">
+                <Button
+                  className="bg-gradient-to-r from-primary to-accent w-full"
+                  data-testid="button-mobile-get-started"
+                >
+                  Get Started
+                </Button>
+              </a>
             </nav>
           </motion.div>
         )}
