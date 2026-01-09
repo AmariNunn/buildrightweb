@@ -52,12 +52,11 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-4xl text-center lg:text-left">
+        <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex justify-center lg:justify-start"
           >
             <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium border border-primary/30 bg-primary/10">
               <Zap className="w-4 h-4 mr-2 text-primary" />
@@ -83,7 +82,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+            className="text-lg lg:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
             data-testid="text-hero-description"
           >
             From stunning websites to powerful social media strategies, we craft digital solutions 
@@ -94,7 +93,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12"
+            className="flex flex-wrap gap-4 mb-12"
           >
             <Button
               size="lg"
