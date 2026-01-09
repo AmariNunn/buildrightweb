@@ -3,6 +3,10 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { fromError } from "zod-validation-error";
+import { Resend } from "resend";
+
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL;
 
 export async function registerRoutes(
   httpServer: Server,
@@ -20,6 +24,26 @@ export async function registerRoutes(
       }
 
       const contact = await storage.createContact(result.data);
+
+      if (resend && RECIPIENT_EMAIL) {
+        try {
+          await resend.emails.send({
+            from: "Build Right Web <onboarding@resend.dev>",
+            to: RECIPIENT_EMAIL,
+            subject: `New Contact: ${result.data.name}`,
+            html: `
+              <h2>New Contact Form Submission</h2>
+              <p><strong>Name:</strong> ${result.data.name}</p>
+              <p><strong>Email:</strong> ${result.data.email}</p>
+              <p><strong>Message:</strong></p>
+              <p>${result.data.message}</p>
+            `,
+          });
+        } catch (emailError) {
+          console.error("Error sending email:", emailError);
+        }
+      }
+
       return res.status(201).json(contact);
     } catch (error) {
       console.error("Error creating contact:", error);
