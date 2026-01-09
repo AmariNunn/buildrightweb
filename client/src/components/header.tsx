@@ -150,22 +150,40 @@ export function Header() {
           >
             <nav className="flex flex-col p-6 gap-2">
               {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => link.isPage ? navigateToPage(link.href) : scrollToSection(link.href)}
-                  className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
-                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </button>
+                link.isPage ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={`/${link.href}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="px-4 py-3 text-left text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors rounded-md"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
-              <Button
-                onClick={() => scrollToSection("#contact")}
-                className="mt-4 bg-gradient-to-r from-primary to-accent"
-                data-testid="button-mobile-get-started"
+              <a
+                href="/#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-4"
               >
-                Get Started
-              </Button>
+                <Button
+                  className="w-full bg-gradient-to-r from-primary to-accent"
+                  data-testid="button-mobile-get-started"
+                >
+                  Get Started
+                </Button>
+              </a>
             </nav>
           </motion.div>
         )}

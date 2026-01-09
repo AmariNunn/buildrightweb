@@ -14,6 +14,10 @@ function ScrollToTop() {
   const [location] = useLocation();
   
   useEffect(() => {
+    // Skip scroll-to-top when there's a hash in the URL (anchor navigation)
+    if (window.location.hash) {
+      return;
+    }
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [location]);
   
