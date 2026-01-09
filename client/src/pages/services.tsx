@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
-const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
+const CONSULTATION_URL = "/book";
 
 interface ServiceItem {
   name: string;
@@ -203,10 +203,10 @@ function ServiceSection({
         className="text-center mt-10"
       >
         <Button size="lg" asChild className="group" data-testid="button-section-cta">
-          <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+          <Link href={CONSULTATION_URL}>
             Get a Free Quote
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
         </Button>
       </motion.div>
     </section>
@@ -229,9 +229,9 @@ export default function Services() {
               <Button variant="ghost" size="sm">Home</Button>
             </Link>
             <Button size="sm" asChild data-testid="button-header-cta">
-              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <Link href={CONSULTATION_URL}>
                 Book a Call
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
@@ -304,10 +304,10 @@ export default function Services() {
                   for your budget. No pressure, just helpful advice.
                 </p>
                 <Button size="lg" asChild className="group" data-testid="button-final-cta">
-                  <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                  <Link href={CONSULTATION_URL}>
                     Book a Free Consultation
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

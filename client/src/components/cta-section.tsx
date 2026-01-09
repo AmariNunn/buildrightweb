@@ -26,7 +26,9 @@ import {
   ExternalLink
 } from "lucide-react";
 
-const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
+import { Link } from "wouter";
+
+const CONSULTATION_URL = "/book";
 import {
   Form,
   FormControl,
@@ -144,11 +146,11 @@ export function CTASection() {
                 className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
                 data-testid="button-cta-book"
               >
-                <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+                <Link href={CONSULTATION_URL}>
                   <Calendar className="w-4 h-4 mr-2" />
                   Book a Free Consultation
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </a>
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
             </motion.div>
           </motion.div>

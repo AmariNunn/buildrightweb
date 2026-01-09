@@ -3,7 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Play, Zap, Globe, TrendingUp, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 
-const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
+import { Link } from "wouter";
+
+const CONSULTATION_URL = "/book";
 
 function AnimatedGrid() {
   return (
@@ -99,11 +101,11 @@ export function Hero() {
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
               data-testid="button-hero-cta"
             >
-              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <Link href={CONSULTATION_URL}>
                 <Calendar className="w-4 h-4 mr-2" />
                 Book Free Consultation
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </Button>
             <Button
               size="lg"

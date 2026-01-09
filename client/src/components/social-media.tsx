@@ -13,7 +13,9 @@ import {
 } from "lucide-react";
 import { SiInstagram, SiLinkedin, SiX, SiFacebook, SiTiktok, SiYoutube } from "react-icons/si";
 
-const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
+import { Link } from "wouter";
+
+const CONSULTATION_URL = "/book";
 
 const features = [
   { icon: Calendar, text: "Content Strategy & Planning" },
@@ -88,11 +90,11 @@ export function SocialMedia() {
               className="bg-gradient-to-r from-accent to-primary hover:opacity-90 transition-opacity group"
               data-testid="button-social-cta"
             >
-              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <Link href={CONSULTATION_URL}>
                 <Calendar className="w-4 h-4 mr-2" />
                 Grow Your Social Presence
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </Button>
           </motion.div>
 

@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Calendar, ExternalLink, CheckCircle, Clock, Video, ArrowRight } from "lucide-react";
 
-const CONSULTATION_URL = "https://cal.com/skyiq/website-development";
+import { Link } from "wouter";
+
+const CONSULTATION_URL = "/book";
 
 const benefits = [
   { icon: Clock, text: "30-minute strategy session" },
@@ -78,11 +80,11 @@ export function BookingSection() {
               className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group lg:hidden"
               data-testid="button-booking-mobile-cta"
             >
-              <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
+              <Link href={CONSULTATION_URL}>
                 <Calendar className="w-4 h-4 mr-2" />
                 Book on Cal.com
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
             </Button>
           </motion.div>
 
@@ -106,10 +108,10 @@ export function BookingSection() {
                   className="text-muted-foreground hover:text-foreground"
                   data-testid="button-open-calcom"
                 >
-                  <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer">
-                    Open in Cal.com
-                    <ExternalLink className="w-3 h-3 ml-1" />
-                  </a>
+                  <Link href={CONSULTATION_URL}>
+                    Full Screen Mode
+                    <ArrowRight className="w-3 h-3 ml-1" />
+                  </Link>
                 </Button>
               </div>
               
