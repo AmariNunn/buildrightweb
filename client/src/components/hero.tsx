@@ -138,7 +138,7 @@ export function Hero() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-4"
           >
             <StatCard value="450+" label="Projects Delivered" icon={Globe} />
-            <StatCard value="150+" label="Happy Clients" icon={TrendingUp} />
+            <StatCard value="1500+" label="Happy Clients" icon={TrendingUp} />
             <StatCard value="15+" label="Years Experience" icon={Zap} />
           </motion.div>
         </div>
