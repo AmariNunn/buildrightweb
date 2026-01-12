@@ -127,10 +127,10 @@ export function BookingSection() {
                 <div className="w-full h-full flex items-start justify-center overflow-hidden">
                   <iframe
                     src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
-                    className="w-[220%] h-[220%] origin-top border-none"
+                    className="w-[200%] h-[200%] origin-top border-none"
                     style={{ 
-                      transform: "scale(0.85)",
-                      marginTop: "-400px"
+                      transform: "scale(0.7)",
+                      marginTop: "-300px"
                     }}
                     onLoad={() => setIsLoading(false)}
                     title="Book a consultation"
