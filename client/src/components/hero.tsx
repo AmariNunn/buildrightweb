@@ -137,9 +137,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-4"
           >
-            <StatCard value="150+" label="Projects Delivered" icon={Globe} />
-            <StatCard value="50+" label="Happy Clients" icon={TrendingUp} />
-            <StatCard value="5+" label="Years Experience" icon={Zap} />
+            <StatCard value="450+" label="Projects Delivered" icon={Globe} />
+            <StatCard value="150+" label="Happy Clients" icon={TrendingUp} />
+            <StatCard value="15+" label="Years Experience" icon={Zap} />
           </motion.div>
         </div>
       </div>
