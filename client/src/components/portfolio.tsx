@@ -84,77 +84,45 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       variants={itemVariants}
       className={`group ${getGridClass()}`}
     >
-      <a href={project.url} target="_blank" rel="noopener noreferrer" className="block h-full">
-        <Card 
-          className="h-full overflow-hidden border-border/50 hover:border-primary/30 transition-all duration-500 cursor-pointer relative bg-black"
-          data-testid={`card-portfolio-${project.id}`}
-        >
-          <CardContent className="p-0 h-full relative overflow-hidden">
-            <div className={`relative h-full min-h-[300px] ${project.size === "large" ? "md:min-h-[450px]" : project.size === "medium" ? "md:min-h-[320px]" : ""}`}>
-              {/* Animated background gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-40 group-hover:opacity-60 transition-opacity duration-700`} />
-              
-              {/* Glassmorphism overlay */}
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] group-hover:backdrop-blur-none transition-all duration-700" />
-
-              {/* Advanced geometric patterns */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 group-hover:opacity-20 transition-opacity duration-700">
-                  <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] border border-white/40 rounded-full animate-[pulse_4s_infinite]" />
-                  <div className="absolute bottom-[-5%] right-[-5%] w-[30%] h-[30%] border border-white/40 rotate-45 animate-[pulse_6s_infinite]" />
-                </div>
-              </div>
-
-              {/* Floating tech elements */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-                <div className="relative w-full h-full">
-                  <motion.div 
-                    animate={{ 
-                      y: [0, -10, 0],
-                      rotate: [0, 5, 0]
-                    }}
-                    transition={{ 
-                      duration: 5, 
-                      repeat: Infinity,
-                      ease: "easeInOut" 
-                    }}
-                    className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md flex items-center justify-center rotate-12 group-hover:scale-110 group-hover:rotate-0 transition-transform duration-700"
-                  >
-                    <Sparkles className="w-8 h-8 text-white/20" />
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Content area with glass effect */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8 z-10">
-                <div className="relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-2xl">
-                  <div className="flex items-center justify-between mb-4">
-                    <Badge className="bg-primary/20 text-primary-foreground border-primary/30 backdrop-blur-sm">
-                      {project.category}
-                    </Badge>
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <ExternalLink className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">
-                    {project.title}
-                  </h3>
-                  <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500">
-                    <p className="text-white/70 text-sm leading-relaxed mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                      {project.description}
-                    </p>
-                    <div className="flex items-center text-xs font-semibold text-primary uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                      Explore Case Study <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-2 transition-transform" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
+      <a href={project.url} target="_blank" rel="noopener noreferrer">
+      <Card 
+        className="h-full overflow-hidden border-border/50 hover:border-primary/30 transition-all duration-300 cursor-pointer"
+        data-testid={`card-portfolio-${project.id}`}
+      >
+        <CardContent className="p-0 h-full">
+          <div className={`relative h-full min-h-[240px] ${project.size === "large" ? "md:min-h-[400px]" : project.size === "medium" ? "md:min-h-[280px]" : ""}`}>
+            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`} />
+            
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_0%,transparent_50%)]" />
+            
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-8 left-8 w-32 h-32 border border-white/30 rounded-md" />
+              <div className="absolute bottom-8 right-8 w-24 h-24 border border-white/30 rounded-full" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/10 rounded-md rotate-45" />
             </div>
-          </CardContent>
-        </Card>
+            
+            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                <ExternalLink className="w-5 h-5 text-white" />
+              </div>
+            </div>
+
+            <div className="absolute inset-0 flex flex-col justify-end p-6">
+              <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <Badge className="mb-3 bg-white/20 text-white border-0 backdrop-blur-sm">
+                  {project.category}
+                </Badge>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {project.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
       </a>
     </motion.div>
   );
