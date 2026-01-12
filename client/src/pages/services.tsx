@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -216,6 +217,8 @@ function ServiceSection({
 }
 
 export default function Services() {
+  const [activeTab, setActiveTab] = useState<"web" | "social">("web");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -240,32 +243,78 @@ export default function Services() {
                 Grow Online
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              From websites to social media to real products you can hold—we help your business 
-              get seen by more people. Click on any service to learn what it does.
-            </p>
+            
+            <div className="flex flex-col items-center gap-8">
+              <div className="inline-flex p-1 bg-muted rounded-xl border border-border/50 shadow-sm">
+                <button
+                  onClick={() => setActiveTab("web")}
+                  className={cn(
+                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
+                    activeTab === "web" 
+                      ? "bg-background text-foreground shadow-sm" 
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Code className={cn("w-4 h-4", activeTab === "web" ? "text-primary" : "")} />
+                  Web Development
+                </button>
+                <button
+                  onClick={() => setActiveTab("social")}
+                  className={cn(
+                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
+                    activeTab === "social" 
+                      ? "bg-background text-foreground shadow-sm" 
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Share2 className={cn("w-4 h-4", activeTab === "social" ? "text-primary" : "")} />
+                  Social Media
+                </button>
+              </div>
+
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed h-16"
+                >
+                  {activeTab === "web" 
+                    ? "Build a website that works for you. From simple pages to full online stores. Click on any service to learn more."
+                    : "Get more followers and turn them into customers. We handle the posting so you can focus on your business."}
+                </motion.p>
+              </AnimatePresence>
+            </div>
           </motion.div>
         </section>
 
-        <ServiceSection 
-          title="Web Development" 
-          subtitle="Build a website that works for you. From simple pages to full online stores."
-          services={webServices}
-          icon={Code}
-          gradient="from-blue-500 to-cyan-500"
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, x: activeTab === "web" ? -20 : 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: activeTab === "web" ? 20 : -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {activeTab === "web" ? (
+              <div className="grid gap-3 md:grid-cols-2">
+                {webServices.map((service, index) => (
+                  <ServiceCard key={service.name} service={service} index={index} />
+                ))}
+              </div>
+            ) : (
+              <div className="grid gap-3 md:grid-cols-2">
+                {socialServices.map((service, index) => (
+                  <ServiceCard key={service.name} service={service} index={index} />
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
 
-        <div className="border-t border-border/30" />
-
-        <ServiceSection 
-          title="Social Media Marketing" 
-          subtitle="Get more followers and turn them into customers. We handle the posting so you can focus on your business."
-          services={socialServices}
-          icon={Share2}
-          gradient="from-pink-500 to-purple-500"
-        />
-
-        <div className="border-t border-border/30" />
+        <div className="mt-20 border-t border-border/30" />
 
         <ServiceSection 
           title="Promotional Products" 
