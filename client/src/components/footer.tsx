@@ -44,7 +44,7 @@ export function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-8 mb-12">
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-6">
               <div className="relative">
@@ -64,22 +64,6 @@ export function Footer() {
 
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                    data-testid={`link-footer-${link.label.toLowerCase().replace(/\s/g, '-')}`}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
@@ -101,7 +85,7 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Resources</h3>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+              {footerLinks.resources.filter(link => !["Privacy Policy", "Terms of Service"].includes(link.label)).map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -125,17 +109,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             {currentYear} Build Right Web. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors" data-testid="link-privacy">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors" data-testid="link-terms">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors" data-testid="link-cookies">
-              Cookie Policy
-            </a>
-          </div>
         </motion.div>
       </div>
     </footer>
