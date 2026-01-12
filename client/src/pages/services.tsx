@@ -217,7 +217,7 @@ function ServiceSection({
 }
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState<"web" | "social">("web");
+  const [activeTab, setActiveTab] = useState<"web" | "social" | "promo">("web");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -245,11 +245,11 @@ export default function Services() {
             </h1>
             
             <div className="flex flex-col items-center gap-8">
-              <div className="inline-flex p-1 bg-muted rounded-xl border border-border/50 shadow-sm">
+              <div className="inline-flex p-1 bg-muted rounded-xl border border-border/50 shadow-sm overflow-x-auto max-w-full">
                 <button
                   onClick={() => setActiveTab("web")}
                   className={cn(
-                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
+                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                     activeTab === "web" 
                       ? "bg-background text-foreground shadow-sm" 
                       : "text-muted-foreground hover:text-foreground"
@@ -261,7 +261,7 @@ export default function Services() {
                 <button
                   onClick={() => setActiveTab("social")}
                   className={cn(
-                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
+                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                     activeTab === "social" 
                       ? "bg-background text-foreground shadow-sm" 
                       : "text-muted-foreground hover:text-foreground"
@@ -269,6 +269,18 @@ export default function Services() {
                 >
                   <Share2 className={cn("w-4 h-4", activeTab === "social" ? "text-primary" : "")} />
                   Social Media
+                </button>
+                <button
+                  onClick={() => setActiveTab("promo")}
+                  className={cn(
+                    "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
+                    activeTab === "promo" 
+                      ? "bg-background text-foreground shadow-sm" 
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  <Package className={cn("w-4 h-4", activeTab === "promo" ? "text-primary" : "")} />
+                  Promotional
                 </button>
               </div>
 
@@ -281,9 +293,9 @@ export default function Services() {
                   transition={{ duration: 0.2 }}
                   className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed h-16"
                 >
-                  {activeTab === "web" 
-                    ? "Build a website that works for you. From simple pages to full online stores. Click on any service to learn more."
-                    : "Get more followers and turn them into customers. We handle the posting so you can focus on your business."}
+                  {activeTab === "web" && "Build a website that works for you. From simple pages to full online stores. Click on any service to learn more."}
+                  {activeTab === "social" && "Get more followers and turn them into customers. We handle the posting so you can focus on your business."}
+                  {activeTab === "promo" && "Real things people can touch and use. Put your brand on items that stick around and make an impact."}
                 </motion.p>
               </AnimatePresence>
             </div>
@@ -293,36 +305,24 @@ export default function Services() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, x: activeTab === "web" ? -20 : 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: activeTab === "web" ? 20 : -20 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
-            {activeTab === "web" ? (
-              <div className="grid gap-3 md:grid-cols-2">
-                {webServices.map((service, index) => (
-                  <ServiceCard key={service.name} service={service} index={index} />
-                ))}
-              </div>
-            ) : (
-              <div className="grid gap-3 md:grid-cols-2">
-                {socialServices.map((service, index) => (
-                  <ServiceCard key={service.name} service={service} index={index} />
-                ))}
-              </div>
-            )}
+            <div className="grid gap-3 md:grid-cols-2">
+              {activeTab === "web" && webServices.map((service, index) => (
+                <ServiceCard key={service.name} service={service} index={index} />
+              ))}
+              {activeTab === "social" && socialServices.map((service, index) => (
+                <ServiceCard key={service.name} service={service} index={index} />
+              ))}
+              {activeTab === "promo" && promoProducts.map((service, index) => (
+                <ServiceCard key={service.name} service={service} index={index} />
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
-
-        <div className="mt-20 border-t border-border/30" />
-
-        <ServiceSection 
-          title="Promotional Products" 
-          subtitle="Real things people can touch and use. Put your brand on items that stick around."
-          services={promoProducts}
-          icon={Package}
-          gradient="from-orange-500 to-red-500"
-        />
 
         <section className="py-16 lg:py-24">
           <motion.div
