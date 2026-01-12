@@ -91,7 +91,7 @@ export function CTASection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="flex justify-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -155,130 +155,6 @@ export function CTASection() {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Card className="border-border/50 backdrop-blur-sm">
-              <CardContent className="p-8">
-                {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-8"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-8 h-8 text-green-500" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Message Received!</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Thank you for reaching out. We'll get back to you within 24 hours.
-                    </p>
-                    <Button
-                      variant="outline"
-                      onClick={() => setIsSubmitted(false)}
-                      data-testid="button-send-another"
-                    >
-                      Send Another Message
-                    </Button>
-                  </motion.div>
-                ) : (
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <Label className="flex items-center gap-2">
-                              <User className="w-4 h-4 text-muted-foreground" />
-                              Your Name
-                            </Label>
-                            <FormControl>
-                              <Input
-                                placeholder="John Doe"
-                                className="mt-2"
-                                data-testid="input-name"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <Label className="flex items-center gap-2">
-                              <Mail className="w-4 h-4 text-muted-foreground" />
-                              Email Address
-                            </Label>
-                            <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="john@example.com"
-                                className="mt-2"
-                                data-testid="input-email"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                          <FormItem>
-                            <Label className="flex items-center gap-2">
-                              <MessageSquare className="w-4 h-4 text-muted-foreground" />
-                              Tell Us About Your Project
-                            </Label>
-                            <FormControl>
-                              <Textarea
-                                placeholder="I'm looking for a modern website for my business..."
-                                className="mt-2 min-h-[120px] resize-none"
-                                data-testid="input-message"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity group"
-                        disabled={mutation.isPending}
-                        data-testid="button-submit-contact"
-                      >
-                        {mutation.isPending ? (
-                          <>
-                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            Send Message
-                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </>
-                        )}
-                      </Button>
-                    </form>
-                  </Form>
-                )}
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </div>
     </section>
