@@ -110,12 +110,14 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection("#services")}
+              asChild
               className="group backdrop-blur-sm border-primary/50 hover:bg-primary/10 transition-colors"
               data-testid="button-hero-services"
             >
-              <Zap className="w-4 h-4 mr-2 text-primary" />
-              Explore Services
+              <Link href="/services">
+                <Zap className="w-4 h-4 mr-2 text-primary" />
+                Explore Services
+              </Link>
             </Button>
             <Button
               size="lg"
