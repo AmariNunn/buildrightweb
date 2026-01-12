@@ -185,15 +185,6 @@ export function Portfolio() {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="group"
-              data-testid="button-view-all-work"
-            >
-              View All Work
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
           </div>
         </motion.div>
       </div>
