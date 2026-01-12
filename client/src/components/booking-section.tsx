@@ -82,7 +82,7 @@ export function BookingSection() {
             >
               <Link href={CONSULTATION_URL}>
                 <Calendar className="w-4 h-4 mr-2" />
-                Book on Cal.com
+                Schedule Your Session
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
