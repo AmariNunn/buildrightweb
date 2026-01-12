@@ -62,37 +62,6 @@ export function Footer() {
               and strategic social media marketing.
             </p>
 
-            <div className="mb-6">
-              <p className="text-sm font-medium mb-3">Subscribe to our newsletter</p>
-              <div className="flex gap-2">
-                <div className="relative flex-1">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="pl-10"
-                    data-testid="input-newsletter"
-                  />
-                </div>
-                <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90" data-testid="button-subscribe">
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 rounded-md bg-muted flex items-center justify-center hover-elevate transition-all"
-                  aria-label={social.label}
-                  data-testid={`link-social-${social.label.toLowerCase().replace(/[\s()]/g, '')}`}
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
           <div>
