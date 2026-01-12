@@ -129,7 +129,7 @@ export function BookingSection() {
                     src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
                     className="w-[180%] h-[180%] origin-top border-none"
                     style={{ 
-                      transform: "scale(1.5)",
+                      transform: "scale(0.55) scale(1.05)",
                       marginTop: "-250px"
                     }}
                     onLoad={() => setIsLoading(false)}
