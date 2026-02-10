@@ -4,9 +4,16 @@
 
 Build Right Web is a modern marketing agency website built with React and Express. It showcases web development and social media marketing services through a sleek, futuristic design inspired by Linear, Stripe, and Vercel aesthetics. The site features a single-page layout with animated sections including hero, services, portfolio showcase, process workflow, testimonials, and a contact form.
 
+## Recent Changes
+
+- **Mobile Responsiveness (Feb 2026)**: Comprehensive mobile-friendly redesign across all components. Standardized padding (px-4/sm:px-6/lg:px-8), responsive typography, flexible grids, and viewport-based heights. Theme toggle always accessible in header on all screen sizes. No hardcoded values - uses Tailwind breakpoints for natural flow.
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+- No hardcoded height/width values - use responsive Tailwind breakpoints
+- Theme toggle must be easily accessible on all screen sizes
+- Natural flow between breakpoints rather than rigid breakpoints
 
 ## System Architecture
 
