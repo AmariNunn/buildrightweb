@@ -54,20 +54,20 @@ export function Header() {
       }`}
       data-testid="header"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2 h-14 sm:h-16 lg:h-20">
           <a
             href="/"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group flex-shrink-0"
             data-testid="link-logo"
           >
             <div className="relative">
-              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <div className="absolute inset-0 rounded-md bg-gradient-to-br from-primary to-accent opacity-50 blur-lg group-hover:opacity-75 transition-opacity" />
             </div>
-            <span className="text-xl font-bold tracking-tight">
+            <span className="text-lg sm:text-xl font-bold tracking-tight">
               Build Right<span className="text-primary">Web</span>
             </span>
           </a>
@@ -96,7 +96,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Button
               variant="ghost"
               size="icon"
@@ -113,7 +113,7 @@ export function Header() {
 
             <Button
               onClick={() => goToSection("contact")}
-              className="hidden sm:flex bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+              className="hidden lg:flex bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
               data-testid="button-get-started"
             >
               Get Started

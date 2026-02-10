@@ -24,7 +24,7 @@ export function BookingSection() {
         <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -115,7 +115,7 @@ export function BookingSection() {
                 </Button>
               </div>
               
-              <div className="relative overflow-hidden rounded-md" style={{ height: "800px" }}>
+              <div className="relative overflow-hidden rounded-md h-[60vh] sm:h-[70vh] lg:h-[800px]">
                 {isLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-background z-10">
                     <div className="text-center">
@@ -124,17 +124,12 @@ export function BookingSection() {
                     </div>
                   </div>
                 )}
-                <div className="w-full h-full flex items-start justify-center overflow-hidden">
+                <div className="w-full h-full overflow-auto">
                   <iframe
                     src={`${CONSULTATION_URL}?embed=true&layout=month_view&hideBranding=true`}
-                    className="w-[200%] h-[200%] origin-top border-none"
-                    style={{ 
-                      transform: "scale(0.7)",
-                      marginTop: "-300px"
-                    }}
+                    className="w-full h-full border-none"
                     onLoad={() => setIsLoading(false)}
                     title="Book a consultation"
-                    scrolling="no"
                     data-testid="iframe-calcom"
                   />
                 </div>

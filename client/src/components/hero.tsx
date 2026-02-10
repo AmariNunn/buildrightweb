@@ -46,12 +46,12 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden" data-testid="section-hero">
+    <section className="relative min-h-screen flex items-center pt-16 sm:pt-20 overflow-hidden" data-testid="section-hero">
       <AnimatedGrid />
       
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-32">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-none mb-6"
+            className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-none mb-6"
             data-testid="text-hero-title"
           >
             We Build{" "}

@@ -18,7 +18,7 @@ export default function Book() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col pt-24 pb-12 px-6 lg:px-8">
+      <main className="flex-1 flex flex-col pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto w-full mb-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export default function Book() {
               <Calendar className="w-4 h-4 mr-2" />
               Secure Your Growth
             </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight mb-6">
               Strategic{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Collaboration
@@ -42,7 +42,7 @@ export default function Book() {
           </motion.div>
         </div>
 
-        <div className="flex-1 max-w-6xl mx-auto w-full bg-background rounded-xl border border-border/50 overflow-hidden shadow-2xl relative" style={{ minHeight: "700px" }}>
+        <div className="flex-1 max-w-6xl mx-auto w-full bg-background rounded-xl border border-border/50 overflow-hidden shadow-2xl relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[700px]">
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-background z-10">
               <div className="text-center">
@@ -53,8 +53,7 @@ export default function Book() {
           )}
           <iframe
             src="https://cal.com/skyiq/website-development"
-            className="w-full h-full border-none"
-            style={{ minHeight: "700px" }}
+            className="w-full h-full border-none min-h-[60vh] sm:min-h-[70vh] lg:min-h-[700px]"
             onLoad={() => setIsLoading(false)}
             title="Book a consultation"
             allow="payment"

@@ -71,10 +71,10 @@ const itemVariants = {
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const getGridClass = () => {
     if (project.size === "large") {
-      return "md:col-span-2 md:row-span-2";
+      return "sm:col-span-2 lg:col-span-2 lg:row-span-2";
     }
     if (project.size === "medium") {
-      return "md:col-span-2";
+      return "sm:col-span-2 lg:col-span-2";
     }
     return "";
   };
@@ -90,7 +90,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         data-testid={`card-portfolio-${project.id}`}
       >
         <CardContent className="p-0 h-full">
-          <div className={`relative h-full min-h-[240px] ${project.size === "large" ? "md:min-h-[400px]" : project.size === "medium" ? "md:min-h-[280px]" : ""}`}>
+          <div className={`relative h-full min-h-[200px] sm:min-h-[240px] ${project.size === "large" ? "lg:min-h-[400px]" : project.size === "medium" ? "lg:min-h-[280px]" : ""}`}>
             <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`} />
             
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_0%,transparent_50%)]" />
@@ -131,7 +131,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 export function Portfolio() {
   return (
     <section id="portfolio" className="relative py-20 lg:py-32" data-testid="section-portfolio">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -157,7 +157,7 @@ export function Portfolio() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-fr"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr"
         >
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />

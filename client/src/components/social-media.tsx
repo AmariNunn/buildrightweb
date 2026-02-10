@@ -44,7 +44,7 @@ const stats = [
 export function SocialMedia() {
   return (
     <section className="relative py-20 lg:py-32 bg-muted/30" data-testid="section-social-media">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -116,7 +116,7 @@ export function SocialMedia() {
                     </Badge>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 mb-8">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-8">
                     {stats.map((stat, index) => (
                       <motion.div
                         key={stat.label}
@@ -126,8 +126,8 @@ export function SocialMedia() {
                         transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                         className="text-center p-4 rounded-md bg-background/50"
                       >
-                        <p className="text-2xl font-bold font-mono text-primary">{stat.value}</p>
-                        <p className="text-xs text-muted-foreground">{stat.label}</p>
+                        <p className="text-lg sm:text-2xl font-bold font-mono text-primary">{stat.value}</p>
+                        <p className="text-[10px] sm:text-xs text-muted-foreground">{stat.label}</p>
                       </motion.div>
                     ))}
                   </div>

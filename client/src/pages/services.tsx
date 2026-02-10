@@ -227,7 +227,7 @@ export default function Services() {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <main className="max-w-5xl mx-auto px-6 lg:px-8 pt-20">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20">
         <section className="py-16 lg:py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -237,7 +237,7 @@ export default function Services() {
             <Badge variant="secondary" className="mb-6 px-4 py-2 border border-primary/30 bg-primary/10">
               Our Services
             </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold tracking-tight mb-6" data-testid="text-services-title">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight mb-6" data-testid="text-services-title">
               Everything You Need to{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Grow Online
@@ -291,7 +291,7 @@ export default function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed h-16"
+                  className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed min-h-[3rem] sm:min-h-[4rem]"
                 >
                   {activeTab === "web" && "Build a website that works for you. From simple pages to full online stores. Click on any service to learn more."}
                   {activeTab === "social" && "Get more followers and turn them into customers. We handle the posting so you can focus on your business."}

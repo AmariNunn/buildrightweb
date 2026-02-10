@@ -43,7 +43,7 @@ export function Footer() {
         <div className="absolute bottom-0 right-1/4 w-96 h-48 bg-accent/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-8 mb-12">
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-6">
