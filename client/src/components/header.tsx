@@ -65,6 +65,7 @@ export function Header() {
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                 <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
+              <div className="absolute inset-0 rounded-md bg-gradient-to-br from-primary to-accent opacity-50 blur-lg group-hover:opacity-75 transition-opacity" />
             </div>
             <span className="text-lg sm:text-xl font-bold tracking-tight">
               Build Right<span className="text-primary">Web</span>
